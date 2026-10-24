@@ -8,7 +8,7 @@ sources:
   - dwg7/kcai-terrio knowledge/terrio-formats-vectors-streaming-and-tiles.md（terrio 0.3.2、2026-10-21）
   - dwg7/kcai-terrio AGENTS.md、README.md
   - yuiseki/study-geoai-algo-py docs/datasets/huggingface-yuiseki/estat-boundary-2020.md、jp-admin-2026-09.md、README.md（コミット 6880b32）
-  - 2026-10-24 の実測（terrio 0.4.2、PyPI の wheel、Linux x86_64）。手順は checks/check-2026-10-24-terrio-reads.md
+  - 2026-10-24 の実測（terrio 0.4.2、PyPI の wheel、Linux x86_64）。手順は checks/check-2026-10-24-terrio-reads.md、checks/check-2026-10-24-estat-boundary-geoparquet.md
 authors:
   - hfu（AI 支援あり）
 reviewed_by: []
@@ -44,12 +44,22 @@ finding:
 
 - Parquet 側の原因は、Yuiseki さんのカードの記述と整合する: 幾何は WKB の BLOB で、GeoParquet の `geo` メタデータが無い。terrio がそれを幾何として認識しないと見える（terrio 側の仕様は未確認）。
 - 元 Shapefile の文字化けは、kcai-terrio の `shapefile-cp932-attributes-not-decoded`（0.3.2）と同じ現象が 0.4.2 でも起きた、という参考の観察にとどめる。
-- 未確認: GeoParquet メタデータを足したコピーなら読めるか。WebAssembly 版（terrio-js）の挙動。リモートの jp-admin を読んだときの転送量。
+## メタデータを足した結果（estat-boundary-2020 のコピー、2026-10-24）
+
+手順と数は `checks/check-2026-10-24-estat-boundary-geoparquet.md`。
+
+- `geo` メタデータ（WKB、Polygon、bbox）を足すと、terrio CLI は `Polygon`、1,010 件、幾何も読めた。範囲は元 Shapefile のものと一致。
+- **CRS を書かないと EPSG:4326 とみなされる**。JGD2000 のデータが WGS 84 と表示される。`crs` に EPSG:4612 を書くと `EPSG:4612 (JGD2000)` になった。
+- `--spat` の結果（渋谷周辺 55 地物）は shapely の交差判定と一致。
+- リモート（ローカルの Range サーバー）の読み: terrio CLI は全量取得（メタデータや bbox 列の有無によらない）。terrio-js は、`bbox` 列と空間順の行グループがあるとき 6.9MB のうち 1.3MB（約19%）で同じ 55 地物を返し、`geo` メタデータだけ（行グループの bbox が無い）の変種は全量（6.4MB）だった。
+- 未確認: Hugging Face の CDN 経由、47 県全部、terrio 以外の道具。元のデータセットは変更していない。
+
+- 未確認（残り）: リモートの jp-admin を読んだときの転送量。
 - 全データセットの `geo` メタデータの有無と置き方は `yuiseki-datasets-access-methods`、規模は `yuiseki-datasets-scale`。
 
 ## 可能性（仮説。上の実測以外は未試験）
 
-1. **前処理の検証**: estat-boundary-2020 の Parquet に、jp-admin HEAD と同じ GeoParquet 1.1 のメタデータ（CRS、bbox covering、複数の行グループ）を付ける変換を試す。作り方の手本は同じ作者の jp-admin にある。kcai-terrio の記録では、terrio は GeoParquet 1.1（covering.bbox 付き）を書き出せる。
+1. **前処理の検証（2026-10-24 に実施。下の「メタデータを足した結果」）**: estat-boundary-2020 の Parquet に GeoParquet 1.1 のメタデータを足すと、terrio 0.4.2 で幾何が読めた。手本は同じ作者の jp-admin HEAD。kcai-terrio の記録では、terrio は GeoParquet 1.1（covering.bbox 付き）を書き出せる。
 2. **範囲読みの比較**: kcai-terrio の記録では、Hugging Face の行グループ 1 つの GeoParquet は WebAssembly 版でもほぼ全体を読んだ。estat-boundary-2020 は都道府県ごと（2.7〜18 MB）に分割されているので、全量でも 1 県単位なら現実的。Yuiseki さんの docs も、形の列が大部分を占め bbox 列が無いと、範囲で絞っても行グループを飛ばせないと測っている。
 3. **日本ローカルの試験データ**: jp-admin と abr-src は座標系の混在（abr の代表点は EPSG:4612 と 6668 が混ざる）の試験になる。元の Shapefile（cp932）を経由した試験は、hfu の判断で今は優先しない（terrio が成熟したら、zip のままブラウザから読む試験が望ましい）。
 4. **座標変換**: 平面直角座標への変換は、東京（9 系を含む）、北海道（12 系）、沖縄（15 系）など複数の系にまたがる県で試す余地がある。e-Stat の定義書に、この 4 都道県が複数の系にまたがるとの注記がある。
