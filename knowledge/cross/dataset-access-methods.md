@@ -60,7 +60,7 @@ finding:
 | terrio CLI（0.3.2） | 他の Hugging Face の GeoParquet | 全量ダウンロード。中断すると一時ファイルが残る | kcai-terrio |
 | terrio-js（WebAssembly） | GeoParquet の bbox 読み | 行グループが複数あり統計があれば範囲で飛ばせる（日本の建物 5 GB で 16 MiB）。Hugging Face の行グループ 1 つのものはほぼ全体（430 MB で約 394 MiB） | kcai-terrio |
 
-- 実験（2026-10-24、estat-boundary-2020 の東京を手元で書き直した）: `geo` メタデータだけでは terrio-js も全量読みで、`bbox` 列と空間順の行グループまで足すと 6.9MB のうち 1.3MB で済んだ。terrio CLI は、どの変種でも全量だった。詳細は `checks/check-2026-10-24-estat-boundary-geoparquet.md`。
+- 実験（2026-10-24、estat-boundary-2020 の東京を手元で書き直した）: `geo` メタデータだけでは terrio-js も全量読みで、`bbox` 列と空間順の行グループまで足すと 6.9MB のうち 1.3MB で済んだ。terrio CLI は、どの変種でも全量だった。Hilbert 順で行グループを 100〜250 行にすると、東京の渋谷周辺は 9〜11% まで下がった。詳細は `checks/check-2026-10-24-estat-boundary-geoparquet.md`。
 - 含意: 行グループの数と bbox covering の有無が、範囲読みの効き目を決める。estat-boundary-2020（行グループ 1）より、jp-admin HEAD（47 行グループ、covering あり）のほうが、範囲読みに向く作りになっている。
 - jp-admin の 148.6 MB のファイルをリモートから `--where` 付きで読んだときの転送量は未確認（ローカルのファイルでだけ確認した）。
 
