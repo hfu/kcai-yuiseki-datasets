@@ -3,13 +3,16 @@ id: yuiseki-datasets-data-styles
 title: データスタイルの違いと、その扱い方の案
 status: draft
 sources:
-  - yuiseki/study-geoai-algo-py docs/datasets/README.md（コミット 6880b32）
+  - yuiseki/study-geoai-algo-py docs/datasets/huggingface-yuiseki/estat-boundary-2020.md、jp-admin-2026-09.md、abr-src-2026-09.md（コミット 6880b32）
+  - yuiseki-datasets-access-methods（2026-10-24 の実測）
 authors:
   - hfu（AI 支援あり）
 reviewed_by: []
 updated: 2026-10-24
-related: []
-verified_how: read-card
+related:
+  - yuiseki-datasets-access-methods
+  - yuiseki-datasets-scale
+verified_how: read-docs
 pattern: styles
 finding:
   - 形・空間単位・識別子の扱いの違いは、データをつなぐ際の主要な障害になる
@@ -35,6 +38,12 @@ finding:
 - そうでないときは、地域名の変動、統計年と境界年の差、重複境界と代表形の選定が問題になる。
 - したがって、データ選定の前に「どの粒度で結ぶか」を決めるのが重要である。
 
+## 追加: 文字コードと幾何の持ち方（2026-10-24 の実測）
+
+- 日本語属性: Hugging Face の Parquet は UTF-8 で、estat-boundary-2020、jp-admin、abr-src とも日本語が正しく読めた。元の配布物（e-Stat の Shapefile は cp932）の文字コードの問題は、Parquet を使えば避けられる。
+- 幾何: GeoParquet の `geo` メタデータがあるものと無いものが混在する（`yuiseki-datasets-access-methods`）。メタデータが無いと、terrio 0.4.2 は WKB の列を幾何と認識しなかった。
+- コードの型: abr-src は全列が文字列（先頭のゼロを守る）、estat-boundary-2020 も属性は全部文字列、jp-admin は人口などが数値型。
+
 ## 出典
 
-- yuiseki/study-geoai-algo-py docs/datasets/README.md（コミット 6880b32）
+- yuiseki/study-geoai-algo-py docs/datasets/huggingface-yuiseki/ の estat-boundary-2020.md、jp-admin-2026-09.md、abr-src-2026-09.md（コミット 6880b32）

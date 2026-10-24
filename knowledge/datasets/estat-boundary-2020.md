@@ -11,6 +11,9 @@ updated: 2026-10-24
 related:
   - estat-boundary-2020-duplicate-boundaries
   - jp-admin-2026-09
+  - yuiseki-datasets-access-methods
+  - yuiseki-datasets-scale
+  - yuiseki-datasets-terrio-usage-possibilities
 verified_how: read-card
 pattern: questions
 finding:
@@ -40,6 +43,22 @@ finding:
 - 重複境界の扱い
 - `KEY_CODE` と `PREF + CITY + S_AREA` の違い
 - `HCODE` による「町丁・字等」と「水面調査区」の違い
+
+## 読み込みの観点：どういう意味で問題がなく、どういう意味で問題があるか
+
+確かめた版: yuiseki/estat-boundary-2020 のコミット 823195c（2026-09-26）。terrio 0.4.2、duckdb。確かめた県は香川（r2ka37）と東京（r2ka13）。
+
+| 観点 | 問題がない（意味） | 問題がある（意味） |
+|---|---|---|
+| 文字コード | Parquet の日本語属性（`香川県`、`坂出市`）は UTF-8 で正しく読める（terrio で GeoJSON に変換して確認）。元の Shapefile は cp932 だが、Parquet を使えば cp932 の問題を避けられる | 元の Shapefile zip を terrio 0.4.2 で読むと属性が化けた（`.cpg` 無し。参考の 1 回のみ。今は追試しない） |
+| 型 | 数値に見える列（JINKO、AREA、CITY）が全部文字列なので、ゼロ落ちや桁落ちは起きない | 計算には CAST が要る。型推論で数値にすると CITY の 3 桁（`402`）が壊れる |
+| 幾何の持ち方 | 東京は 6,021 行すべて POLYGON、WKB で読める（カード）。範囲は沖ノ鳥島・南鳥島を含む | GeoParquet の `geo` メタデータが無く、列は素の BLOB。terrio 0.4.2 は `Geometry: None` と見て、変換すると幾何が全部 null になる。CRS もファイルに無い |
+| 座標系 | カードと provenance.yaml は JGD2000（EPSG:4612）としている | ファイルからは確かめられない。定義書は「属性情報は JGD2000」、複数の系にまたがる 4 都道県は平面直角座標系の系を決めて書くとある |
+| 規模 | 1 県 1 ファイル（2.7〜18.1 MB）。必要な県だけ取れる | 行グループが 1 つ。リモートから読むと、terrio CLI は 4.5 MB の県を全量取得した。1 行あたりの形が大きく、範囲で絞る手段が無い |
+| 重複行 | 定義書どおりの仕様で、人口の合計は公表値と一致する | 小地域を 1 行にするには E1/M の解釈が要る。詳しくは `estat-boundary-2020-duplicate-boundaries` |
+| キー | KEY_CODE は結合に使える | 長さが 2・9・11 桁と混在。11 桁の PREF+CITY+S_AREA を自分で作る |
+
+- 要約: 属性の読み取りは問題ない（UTF-8、全て文字列）。幾何を GIS の道具にそのまま渡す段階には問題がある（`geo` メタデータ無し）。同じ作者の jp-admin-2026-09 は HEAD で GeoParquet 1.1 になっており、同じ作りに揃えれば解ける見込み（未試験）。
 
 ## 出典
 

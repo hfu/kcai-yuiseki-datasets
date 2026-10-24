@@ -12,3 +12,12 @@
 - 一つの文書は 200 行程度を目安にし、広がりすぎると分割する。
 - 見取り図、カテゴリ分け、データスタイル、パターン、実務は分離して書く。
 - まずは小さく始め、分かったことを増やして編集していく。
+
+## 2026-10-24: 出典の取り違えを直し、データを読んで確かめる
+
+- 初期の cross 文書は、出典を `docs/datasets/README.md`（出どころの目録）としていたが、中身は `huggingface-yuiseki/README.md` のものだった。出典を直し、見取り図を書き直した。`jp-admin-2026-09` の出典パス（`docs/datasets/jp-admin-2026-09.md`）は存在しなかった（正しくは `huggingface-yuiseki/jp-admin-2026-09.md`）。
+- 当初のチェック記録では e-stat.go.jp と huggingface.co に届かなかったが、同日の後の確認では両方に届いた。到達性は環境の状態で変わるので、そのつど記録する。届いたので、定義書 PDF とデータを直接読んで `duplicate-boundaries` を確かめた。
+- カードの記述はその日付のもの。jp-admin-2026-09 は、カードの後に GeoParquet 1.1 になっていた。データセットの記述には sha と日付を添える。
+- datasets の踏み跡には「どういう意味で問題がなく、どういう意味で問題があるか」の表（文字コード、型、幾何、座標系、規模）を持たせる（hfu の指示）。
+- 元の Shapefile（cp932）に戻る試験は、今は優先しない（hfu の指示）。terrio が成熟したら、zip のままブラウザから読む試験を考える。
+- 規模とアクセス方法は cross に置く（`dataset-scale`、`dataset-access-methods`）。terrio での活用は `terrio-usage-possibilities`。外部（opengeos/terrio など）への投稿はしない。

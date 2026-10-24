@@ -3,13 +3,16 @@ id: yuiseki-datasets-practices-data-joins
 title: データセットをつなぐときのグッドプラクティス
 status: draft
 sources:
-  - yuiseki/study-geoai-algo-py docs/datasets/README.md（コミット 6880b32）
+  - yuiseki/study-geoai-algo-py docs/datasets/huggingface-yuiseki/estat-boundary-2020.md、jp-admin-2026-09.md、abr-src-2026-09.md（コミット 6880b32）
+  - yuiseki-datasets-access-methods（2026-10-24 の実測）
 authors:
   - hfu（AI 支援あり）
 reviewed_by: []
 updated: 2026-10-24
-related: []
-verified_how: read-card
+related:
+  - yuiseki-datasets-patterns-regional-keys
+  - yuiseki-datasets-terrio-usage-possibilities
+verified_how: read-docs
 pattern: practice
 finding:
   - データセットをつなぐときは、空間単位・時点・識別子・表記ゆれを先に明示するのが安全
@@ -30,4 +33,4 @@ finding:
 
 ## 出典
 
-- yuiseki/study-geoai-algo-py docs/datasets/README.md（コミット 6880b32）
+- yuiseki/study-geoai-algo-py docs/datasets/huggingface-yuiseki/ の estat-boundary-2020.md、jp-admin-2026-09.md、abr-src-2026-09.md（コミット 6880b32）
