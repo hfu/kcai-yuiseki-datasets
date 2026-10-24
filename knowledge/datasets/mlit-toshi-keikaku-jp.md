@@ -39,6 +39,7 @@ finding:
 | GeoParquet の `geo` メタデータ | あり（代表ファイル） |
 | ほぼ空の列（代表ファイル） | `ValidType` 99.8%、`INNumber` 99.3%、`INDate` 99.0%、`Custodian` 98.7% |
 | 先頭行の文字検査（代表ファイルの先頭3,000行・文字列列） | 異常なし |
+| 全行の文字検査（2 ファイル、全文字列列） | 異常なし（検査したファイル: senbiki.parquet、kousoujyukyo.parquet。他のファイルは未検査） |
 
 ## 答えうる問い
 

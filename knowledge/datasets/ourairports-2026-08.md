@@ -39,6 +39,7 @@ finding:
 | GeoParquet の `geo` メタデータ | あり（代表ファイル） |
 | ほぼ空の列（代表ファイル） | `home_link` 94.5%、`iata_code` 89.5%、`icao_code` 87.8%、`wikipedia_link` 80.5% |
 | 先頭行の文字検査（代表ファイルの先頭3,000行・文字列列） | 異常なし |
+| 全行の文字検査（2 ファイル、全文字列列） | 異常なし（検査したファイル: airports.parquet、countries.parquet。他のファイルは未検査） |
 
 ## 答えうる問い
 
