@@ -10,6 +10,7 @@ authors:
 reviewed_by: []
 updated: 2026-10-24
 related:
+  - yuiseki-datasets-index
   - yuiseki-datasets-categories
   - yuiseki-datasets-japan-admin-lineage
 datasets:
@@ -24,6 +25,7 @@ finding:
 
 ## 要点
 
+- 2026-10-24 時点の全 69 件の索引と分類は `yuiseki-datasets-index`。この文書は、コミット 6880b32 の docs が書いていた時点（45 行）の見取り図。
 - 一覧は `huggingface-yuiseki/README.md`。2026-09-28 の API 取得で 26 件と書かれているが、表はその後の更新（〜2026-10-10）を含み 45 行ある（コミット 6880b32 で数えた）。件数は版で変わるので、引くときは日付を添える。
 - `docs/datasets/README.md` の本文は「Hugging Face の地理に関わる 20 個」と書く。これも別の時点の数で、README 同士で食い違う。どれが正しいかは未確認。
 - 上位の `docs/datasets/README.md` は、Hugging Face 以外も含む出どころの目録（STAC カタログ、z.yuiseki.net、source.coop、uedayou.net、その他）。Hugging Face のデータセットはその一つの節。

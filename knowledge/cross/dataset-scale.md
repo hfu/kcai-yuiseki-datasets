@@ -11,6 +11,7 @@ authors:
 reviewed_by: []
 updated: 2026-10-24
 related:
+  - yuiseki-datasets-index
   - yuiseki-datasets-access-methods
   - yuiseki-datasets-landscape
   - yuiseki-datasets-terrio-usage-possibilities
@@ -22,6 +23,7 @@ finding:
 
 ## 要点
 
+- 全 69 件の索引は `yuiseki-datasets-index`、個別の踏み跡は `knowledge/datasets/<名前>.md`。
 - 一覧（コミット 6880b32 の `huggingface-yuiseki/README.md`）は 45 行だったが、API では 69 件（地理に関係ない古い 6 件を含む）。その後に、国土数値情報のバス（ksj-*）、国勢調査メッシュ（estat-census-mesh-*）、estat-jumin-idou、un-wpp、egov-laws-jp などが増えている。**件数と規模は日付つきで引く**。
 - 全体は約 58.0 GB。Parquet は約 21.1 GB、残り（約 36.8 GB）は元の配布物（zip、gz、pbf、tif、csv、xlsx、dta、geojson、jsonl）。「元の配布物も一緒に置く」のが基本の作りで、データセットの総量は Parquet だけの量より大きい。
 - 規模の分布（全体の大きさ）: 10 MB 未満 20 件、10〜100 MB 13 件、100 MB〜1 GB 23 件、1 GB 以上 13 件。

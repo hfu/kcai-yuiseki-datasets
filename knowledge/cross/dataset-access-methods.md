@@ -13,7 +13,9 @@ authors:
 reviewed_by: []
 updated: 2026-10-24
 related:
+  - yuiseki-datasets-index
   - yuiseki-datasets-scale
+  - yuiseki-datasets-version-policies
   - yuiseki-datasets-terrio-usage-possibilities
   - yuiseki-datasets-categories
 verified_how: read-data
