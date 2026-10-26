@@ -11,6 +11,8 @@ reviewed_by: []
 updated: 2026-10-24
 related:
   - yuiseki-datasets-landscape
+  - yuiseki-datasets-growth-2026-10-26
+  - yuiseki-datasets-un-docs-kcai-feasibility
   - yuiseki-datasets-scale
   - yuiseki-datasets-access-methods
   - yuiseki-datasets-version-policies
@@ -25,6 +27,7 @@ finding:
 
 ## 要点
 
+- **2026-10-26 時点では 96 件**。この索引は 2026-10-24 の 69 件で、新規 27 件は `yuiseki-datasets-growth-2026-10-26` に概観がある（個別の踏み跡は未作成）。
 - 全 69 件（`knowledge/datasets/` に 1 件 1 ファイル）。分類はこの踏み跡での整理で、Yuiseki さんの分類ではない。
 - 横断の踏み跡: 規模（`yuiseki-datasets-scale`）、アクセス方法（`yuiseki-datasets-access-methods`）、版の持ち方（`yuiseki-datasets-version-policies`）、権利の除外（`yuiseki-datasets-rights-exclusions`）、コード体系（`yuiseki-datasets-code-systems`）、テキスト系（`yuiseki-datasets-text-corpora`）。
 
