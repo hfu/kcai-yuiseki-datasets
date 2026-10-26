@@ -1,9 +1,9 @@
 ---
 id: yuiseki-datasets-index
-title: yuiseki のデータセット全69件の索引：分類、中身、規模、踏み跡
+title: yuiseki のデータセット全96件の索引：分類、中身、規模、踏み跡
 status: draft
 sources:
-  - Hugging Face API `/api/datasets?author=yuiseki`（2026-10-24）
+  - Hugging Face API `/api/datasets?author=yuiseki`（2026-10-26）
   - 各データセットのカード（Hugging Face 上の main）
 authors:
   - hfu（AI 支援あり）
@@ -12,7 +12,6 @@ updated: 2026-10-24
 related:
   - yuiseki-datasets-landscape
   - yuiseki-datasets-growth-2026-10-26
-  - yuiseki-datasets-un-docs-kcai-feasibility
   - yuiseki-datasets-scale
   - yuiseki-datasets-access-methods
   - yuiseki-datasets-version-policies
@@ -22,13 +21,12 @@ related:
 verified_how: read-docs
 pattern: landscape
 finding:
-  - 2026-10-24 時点で69件。日本の公的データ、OSM とその派生、世界の統計、世界の地理、知識・テキストの5群と旧作に分けると、どの群にも個別の踏み跡がある
+  - 2026-10-26 時点で96件。日本の公的データ、OSM とその派生、世界の統計、世界の地理、知識・テキスト、旧作に、2026-10-25〜26 に増えた6群（北海道東部の窓抽出、クマ出没記録、災害・気象、気候、人口・建物・土地被覆、地形・基盤）を加えて分けると、全件に個別の踏み跡がある
 ---
 
 ## 要点
 
-- **2026-10-26 時点では 96 件**。この索引は 2026-10-24 の 69 件で、新規 27 件は `yuiseki-datasets-growth-2026-10-26` に概観がある（個別の踏み跡は未作成）。
-- 全 69 件（`knowledge/datasets/` に 1 件 1 ファイル）。分類はこの踏み跡での整理で、Yuiseki さんの分類ではない。
+- 全 96 件（`knowledge/datasets/` に 1 件 1 ファイル。2026-10-26 時点）。分類はこの踏み跡での整理で、Yuiseki さんの分類ではない。新規27件の概観は `yuiseki-datasets-growth-2026-10-26`。
 - 横断の踏み跡: 規模（`yuiseki-datasets-scale`）、アクセス方法（`yuiseki-datasets-access-methods`）、版の持ち方（`yuiseki-datasets-version-policies`）、権利の除外（`yuiseki-datasets-rights-exclusions`）、コード体系（`yuiseki-datasets-code-systems`）、テキスト系（`yuiseki-datasets-text-corpora`）。
 
 ## 一覧
@@ -132,6 +130,63 @@ finding:
 | [sake_qa](../datasets/sake_qa.md) | 日本酒の質問応答5,176件(`input`・`output`・`type`) | 0.1 MB | mit |
 | [scp-jp-plain](../datasets/scp-jp-plain.md) | SCP財団日本語版の本文999件 | 5.3 MB | cc-by-sa-3.0 |
 
+### 北海道東部の窓抽出（6件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [ctrees-agb-hokkaido-east-100m](../datasets/ctrees-agb-hokkaido-east-100m.md) | 東部北海道の固定の長方形窓で、CTrees の地上部バイオマス（AGB）と不確かさを、10×10画素のブロックごとに集約した多角形（43,550件） | 27.9 MB | cc-by-4.0 |
+| [forest-typology-validation-2020](../datasets/forest-typology-validation-2020.md) | ForTy 森林タイプ図の検証用の世界の標本9,100地点を点にした GeoParquet | 1.6 MB | cc-by-4.0 |
+| [forty-hokkaido-east-2020](../datasets/forty-hokkaido-east-2020.md) | 6クラスの森林タイプ図（10m）の、東部北海道の6タイルを多角形化した GeoParquet（63,630件） | 20.5 MB | cc-by-4.0 |
+| [gebco-2026-hokkaido-east-15as](../datasets/gebco-2026-hokkaido-east-15as.md) | GEBCO 2026（海陸の15秒格子）の北海道東方の3°×3°を、画素ごとの長方形の多角形（518,400件、720×720）と標高（m、負は水深）にした GeoParquet | 3.9 MB | other |
+| [gfw-forest-carbon-net-flux-hokkaido-east-2001-2023-v1-3-2](../datasets/gfw-forest-carbon-net-flux-hokkaido-east-2001-2023-v1-3-2.md) | 正味フラックス（2001〜2023年の累積、Mg CO₂e/ha）が0でないセルの中心点を、点の GeoParquet（34,516,630行）にしたもの | 127.1 MB | cc0-1.0 |
+| [gpw-grasslands-hokkaido-east-2018-2020-250m](../datasets/gpw-grasslands-hokkaido-east-2018-2020-250m.md) | 草地の優占クラス（耕作草地・自然半自然草地・低木地・その他）の30m図を、10×10画素のブロック（約250m）に集約した多角形（313,489件） | 13.3 MB | cc-by-4.0 |
+
+### クマ出没記録（6件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [akita-kumadas-wildlife-sighting](../datasets/akita-kumadas-wildlife-sighting.md) | クマダスの目撃・痕跡・人身被害の記録24,757件（2022-04-10〜2026-09-30） | 8.5 MB | cc-by-4.0 |
+| [gifu-bear-sighting](../datasets/gifu-bear-sighting.md) | ツキノワグマの目撃記録6,946件（FY2014〜FY2025）を年度ごと12表の GeoParquet にしたもの | 1.2 MB | cc-by-4.0 |
+| [ishikawa-bear-incident](../datasets/ishikawa-bear-incident.md) | クマの出没データ3,901件を6表の GeoParquet にしたもの | 1.2 MB | cc-by-4.0 |
+| [kamisunagawa-higuma-sighting](../datasets/kamisunagawa-higuma-sighting.md) | 北海道上砂川町のヒグマの出没105件（2024-05-11〜2026-08-19、R6〜R8） | 0.1 MB | cc-by-4.0 |
+| [kyoto-bear-sighting](../datasets/kyoto-bear-sighting.md) | ツキノワグマの目撃10,225件（2009-04-08〜2018-12-10） | 2.7 MB | cc-by-4.0 |
+| [nagaoka-bear-sighting](../datasets/nagaoka-bear-sighting.md) | 新潟県長岡市のクマの目撃・痕跡166件（平成26・27年度、2014-04-09〜2016-03-30） | 0.2 MB | cc-by-4.0 |
+
+### 災害・気象（5件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [ibtracs-v04r01](../datasets/ibtracs-v04r01.md) | 世界の台風・ハリケーンなどの熱帯低気圧の観測位置311,935行（1980-01-01〜2026-10-22 UTC） | 154.0 MB | other |
+| [jma-rain-tokyo](../datasets/jma-rain-tokyo.md) | 東京都内の気象庁31観測所の降水量（日別588,783観測所日、時別8,660,976観測所時）と、観測所一覧・取得ファイルの記録 | 282.3 MB | cc-by-4.0 |
+| [ksj-a31a-flood-tokyo23](../datasets/ksj-a31a-flood-tokyo23.md) | 東京23区に触れる洪水浸水想定区域227,651件（計画規模50,124・想定最大規模136,671・浸水継続時間40,374・家屋倒壊等氾濫想定（氾濫流301・河岸浸食181）） | 1.47 GB | cc-by-4.0 |
+| [tokyo-flood-record-jp](../datasets/tokyo-flood-record-jp.md) | 東京の浸水実績5,845区域（多角形）と121点（点）の、被害の棟数・世帯数・河川・区市町村・最寄りの雨量計の降雨を持つ記録 | 3.2 MB | cc-by-4.0 |
+| [usgs-comcat-2025-m45](../datasets/usgs-comcat-2025-m45.md) | 2025年のマグニチュード4.5以上の地震8,502件（優先ネットワーク `us`、事象種別 earthquake） | 6.7 MB | other |
+
+### 気候（2件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [agera5-japan-monthly-temperature-1979-2026](../datasets/agera5-japan-monthly-temperature-1979-2026.md) | 日本周辺の窓（長方形、海を含む）の0.1°格子の月別気温を、セルの中心点の GeoParquet（47,507,200行、571か月、年ごと48ファイル）にしたもの | 84.6 MB | cc-by-4.0 |
+| [koppen-geiger-east-asia-1991-2020](../datasets/koppen-geiger-east-asia-1991-2020.md) | ケッペン・ガイガーの気候区分図を、同じクラスが4連結で続く領域の多角形（13,480件）にした GeoParquet | 13.5 MB | cc-by-4.0 |
+
+### 人口・建物・土地被覆（6件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [esa-worldcover-tokyo-2021-100m](../datasets/esa-worldcover-tokyo-2021-100m.md) | 10m の土地被覆図を、10×10画素のブロック（約100m、360,000件）の多角形にし、11クラスの画素数・優占クラス・優占率を持たせた GeoParquet | 34.1 MB | cc-by-4.0 |
+| [ghsl-japan-core-2020-30arcsec](../datasets/ghsl-japan-core-2020-30arcsec.md) | 2020年の居住人口（GHS-POP）と建物表面積（GHS-BUILT-S）を、各720万セルの多角形にした GeoParquet（5タイル×2種、合計1,440万行） | 177.7 MB | cc-by-4.0 |
+| [kontur-population-2023-11-01-22km](../datasets/kontur-population-2023-11-01-22km.md) | 世界を H3 解像度4（約22km）のセルにした人口の推定（71,283セル） | 10.2 MB | other |
+| [microsoft-building-footprints-kanto-2026-08-13](../datasets/microsoft-building-footprints-kanto-2026-08-13.md) | 東京・東関東の2つの QuadKey の機械検出の建物の多角形5,781,554件（`height`・`confidence`・`quadkey`） | 840.2 MB | other |
+| [worldpop-idn-population-2015-2030-1km-r2025a](../datasets/worldpop-idn-population-2015-2030-1km-r2025a.md) | WorldPop の2015〜2030年の年次人口推定（制約つき）を、1km の元の格子のセル多角形にした GeoParquet（948,911セル） | 94.3 MB | other |
+| [worldpop-kor-population-2015-2030-1km-r2025a](../datasets/worldpop-kor-population-2015-2030-1km-r2025a.md) | WorldPop の2015〜2030年の年次人口推定を、韓国の1km 格子のセル多角形にした GeoParquet（130,927セル | 12.9 MB | other |
+
+### 地形・基盤（2件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [gsi-dem-fuji-z14-100m-2026-10-25](../datasets/gsi-dem-fuji-z14-100m-2026-10-25.md) | 国土地理院の DEM10B の標高タイル100枚（ズーム14、10×10）を、10×10画素ごとの約100m の Web Mercator 格子にして、平均・最小・最大標高と有効画素数を持たせた GeoParquet（65,536セル） | 52.5 MB | other |
+| [timezone-boundary-builder-2026d](../datasets/timezone-boundary-builder-2026d.md) | タイムゾーンの境界の多角形（`tzid` つき）を3つの設定（全ゾーン、1970年以降同じ、現在同じ）の GeoParquet にしたもの | 333.9 MB | odbl |
+
 ## 確かめなかったこと
 
 - 分類の境界は便宜的（geo-triples-jp-gov は入力が jp-admin なので日本の公的データに置き、geo-triples-japan・tokyo23 は入力が OSM なので OSM の派生に置いた）。
@@ -139,4 +194,4 @@ finding:
 
 ## 出典
 
-- Hugging Face API（2026-10-24）、各データセットのカード
+- Hugging Face API（2026-10-26）、各データセットのカード

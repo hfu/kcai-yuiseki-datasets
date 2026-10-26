@@ -54,6 +54,14 @@ finding:
 | un-wpp | 現行 WPP2024 のカードは 53 表・200,840,623 行。実際の Parquet は 54 本・合計 200,840,676 行で、差は 53 行。差の内訳は未確認 | 未解決 |
 | 前回の踏み跡（study-geoai-algo-py 読み取り） | `abr-src` のカードは町字 727,428 行、実測 727,429（廃止予定の1行の数え方）、「26 件」「45 行」「69 件」など、件数の時点の違い | 時点の違い |
 
+## 追加分（2026-10-26、新規27件）の突き合わせ
+
+- **件数が一致したもの**: akita（24,757）、gifu（6,946）、ishikawa（3,901）、kamisunagawa（105）、kyoto（10,225）、nagaoka（166）、tokyo-flood-record-jp（5,845+121=5,966）、jma-rain-tokyo（日別588,783+時別8,660,976 ほか）、gfw（34,516,630）、gebco（518,400）、esa-worldcover（360,000）、ghsl（7,200,000×2）、worldpop-kor（130,927）、agera5（47,507,200）、microsoft-building-footprints（5,781,554）、usgs（8,502）、koppen（13,480）、forty（63,630）、forest-typology-validation（9,100+8,190=17,290）。
+- **数え方の違い**: ksj-a31a-flood-tokyo23 の Parquet 全行 455,302 は、全体1本とカテゴリ別5本の二重計上で、実際は 227,651（カードの件数）。
+- **文字（実測）**: ishikawa-bear-incident の `forest_r1_r6` の `remarks`（2,423行）に U+FFFD が17行。それ以外の文字列の列を持つ新規は、検査した範囲で U+FFFD も二重エンコードの疑いも無かった。
+- **欠損（実測）**: usgs-comcat の `tz` は全行null、`felt` 84%、`mmi` 90%。tokyo-flood-record-jp の `district3` 99.7%、`pd_bldg` 98%。ibtracs の `WMO_WIND` 61%、`WMO_PRES` 58%。いずれもカードの記述と矛盾しない（カードは欠損の割合を書かない）。
+- 確かめた範囲（件数と、文字列の列の文字の状態）では、カードとデータの食い違いは見つかっていない。
+
 ## 元データ由来の文字の欠陥（Parquet は忠実に保持）
 
 - **Natural Earth の DBF の二重エンコード:** 元 zip の `ne_10m_admin_1_states_provinces.dbf`（`.cpg` は UTF-8）で、`woe_label` の `Paysandú` が UTF-8 のバイト `C3 83 C2 BA`（`PaysandÃº`）で入っている。4,596 行中、`Ã` を含むのは 134 行。yuiseki/ne-admin0-10m の Parquet も同じ文字列。カードは変換時に「`.cpg` が指す文字コードで復号した」と書いており、元の欠陥を直していない。natural-earth の別レイヤー（`ne_10m_admin_1_states_provinces_lakes`）の先頭 3,000 行にも同じ現象がある。

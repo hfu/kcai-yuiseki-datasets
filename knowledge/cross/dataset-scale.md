@@ -12,6 +12,7 @@ reviewed_by: []
 updated: 2026-10-24
 related:
   - yuiseki-datasets-index
+  - yuiseki-datasets-growth-2026-10-26
   - yuiseki-datasets-access-methods
   - yuiseki-datasets-landscape
   - yuiseki-datasets-terrio-usage-possibilities
@@ -112,6 +113,43 @@ finding:
 | sake_qa | 2024-03-23 | mit | 0.1 MB | 3 | 1 | 0.1 MB | 0.1 MB | plain |
 | osm-tokyo23-questions | 2026-09-23 | odbl | 0.1 MB | 6 | 1 | 0.0 MB | 0.0 MB | plain |
 | rinya-forest-inventory | 2026-10-07 | other | 0.0 MB | 4 | 0 | - | - | no-parquet |
+
+## 追加分（2026-10-26、新規27件）
+
+- 2026-10-26 時点で **96 件**、合計 61.81 GB（Parquet は約 22.38 GB）。新規27件は合計 3.78 GB。上の表と数字は 2026-10-24 の 69 件のもの。
+- 新規27件で最も大きいのは ksj-a31a-flood-tokyo23（1.47 GB、元 zip が約1.26GB）、microsoft-building-footprints（840.2 MB）、jma-rain-tokyo（282.3 MB）。1 ファイルが最も大きい Parquet は microsoft-building-footprints-kanto-2026-08-13（273.2 MB）、ksj-a31a-flood-tokyo23（106.6 MB）、worldpop-idn-population-2015-2030-1km-r2025a（94.3 MB）。
+- 新規の Parquet の行数は、1件が数百行（nagaoka 166、kamisunagawa 105）から、agera5 の 47,507,200 行（年ごと48ファイル）まで幅が大きい。
+- 「全国1本と県別」「全体1本とカテゴリ別」で行を二重に持つもの（ksj-a31a-flood-tokyo23）では、Parquet の行数の合計は実際の件数の2倍になる。
+
+| データセット | 最終更新 | ライセンス(タグ) | 全体 | ファイル数 | Parquet 本数 | Parquet 合計 | 最大の Parquet | 地物形式 |
+|---|---|---|---|---|---|---|---|---|
+| ksj-a31a-flood-tokyo23 | 2026-10-26 | cc-by-4.0 | 1.47 GB | 17 | 6 | 213.4 MB | 106.6 MB | geoparquet |
+| microsoft-building-footprints-kanto-2026-08-13 | 2026-10-25 | other | 840.2 MB | 11 | 2 | 390.5 MB | 273.2 MB | geoparquet |
+| timezone-boundary-builder-2026d | 2026-10-25 | odbl | 333.9 MB | 18 | 3 | 211.7 MB | 90.0 MB | geoparquet |
+| jma-rain-tokyo | 2026-10-26 | cc-by-4.0 | 282.3 MB | 1035 | 5 | 30.5 MB | 28.8 MB | plain |
+| ghsl-japan-core-2020-30arcsec | 2026-10-25 | cc-by-4.0 | 177.7 MB | 34 | 10 | 154.0 MB | 16.5 MB | geoparquet |
+| ibtracs-v04r01 | 2026-10-25 | other | 154.0 MB | 8 | 1 | 8.8 MB | 8.8 MB | geoparquet |
+| gfw-forest-carbon-net-flux-hokkaido-east-2001-2023-v1-3-2 | 2026-10-25 | cc0-1.0 | 127.1 MB | 10 | 1 | 36.9 MB | 36.9 MB | geoparquet |
+| worldpop-idn-population-2015-2030-1km-r2025a | 2026-10-25 | other | 94.3 MB | 9 | 1 | 94.3 MB | 94.3 MB | geoparquet |
+| agera5-japan-monthly-temperature-1979-2026 | 2026-10-25 | cc-by-4.0 | 84.6 MB | 56 | 48 | 83.8 MB | 1.8 MB | geoparquet |
+| gsi-dem-fuji-z14-100m-2026-10-25 | 2026-10-25 | other | 52.5 MB | 105 | 1 | 1.7 MB | 1.7 MB | geoparquet |
+| esa-worldcover-tokyo-2021-100m | 2026-10-25 | cc-by-4.0 | 34.1 MB | 17 | 1 | 4.8 MB | 4.8 MB | geoparquet |
+| ctrees-agb-hokkaido-east-100m | 2026-10-25 | cc-by-4.0 | 27.9 MB | 19 | 1 | 2.1 MB | 2.1 MB | geoparquet |
+| forty-hokkaido-east-2020 | 2026-10-25 | cc-by-4.0 | 20.5 MB | 15 | 1 | 12.8 MB | 12.8 MB | geoparquet |
+| koppen-geiger-east-asia-1991-2020 | 2026-10-25 | cc-by-4.0 | 13.5 MB | 9 | 1 | 1.0 MB | 1.0 MB | geoparquet |
+| gpw-grasslands-hokkaido-east-2018-2020-250m | 2026-10-25 | cc-by-4.0 | 13.3 MB | 9 | 1 | 4.8 MB | 4.8 MB | geoparquet |
+| worldpop-kor-population-2015-2030-1km-r2025a | 2026-10-25 | other | 12.9 MB | 5 | 1 | 12.9 MB | 12.9 MB | geoparquet |
+| kontur-population-2023-11-01-22km | 2026-10-25 | other | 10.2 MB | 7 | 1 | 3.5 MB | 3.5 MB | geoparquet |
+| akita-kumadas-wildlife-sighting | 2026-10-26 | cc-by-4.0 | 8.5 MB | 9 | 1 | 2.1 MB | 2.1 MB | geoparquet |
+| usgs-comcat-2025-m45 | 2026-10-25 | other | 6.7 MB | 8 | 1 | 0.6 MB | 0.6 MB | geoparquet |
+| gebco-2026-hokkaido-east-15as | 2026-10-25 | other | 3.9 MB | 4 | 1 | 3.9 MB | 3.9 MB | geoparquet |
+| tokyo-flood-record-jp | 2026-10-26 | cc-by-4.0 | 3.2 MB | 54 | 2 | 1.1 MB | 1.1 MB | geoparquet |
+| kyoto-bear-sighting | 2026-10-26 | cc-by-4.0 | 2.7 MB | 9 | 1 | 0.6 MB | 0.6 MB | geoparquet |
+| forest-typology-validation-2020 | 2026-10-25 | cc-by-4.0 | 1.6 MB | 9 | 2 | 0.7 MB | 0.3 MB | geoparquet |
+| ishikawa-bear-incident | 2026-10-26 | cc-by-4.0 | 1.2 MB | 19 | 6 | 0.3 MB | 0.2 MB | geoparquet |
+| gifu-bear-sighting | 2026-10-26 | cc-by-4.0 | 1.2 MB | 31 | 12 | 0.5 MB | 0.1 MB | geoparquet |
+| nagaoka-bear-sighting | 2026-10-26 | cc-by-4.0 | 0.2 MB | 14 | 1 | 0.0 MB | 0.0 MB | geoparquet |
+| kamisunagawa-higuma-sighting | 2026-10-26 | cc-by-4.0 | 0.1 MB | 13 | 1 | 0.0 MB | 0.0 MB | geoparquet |
 
 ## 確かめなかったこと
 

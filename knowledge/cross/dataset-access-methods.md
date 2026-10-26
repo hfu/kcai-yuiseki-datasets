@@ -64,6 +64,14 @@ finding:
 - 含意: 行グループの数と bbox covering の有無が、範囲読みの効き目を決める。estat-boundary-2020（行グループ 1）より、jp-admin HEAD（47 行グループ、covering あり）のほうが、範囲読みに向く作りになっている。
 - jp-admin の 148.6 MB のファイルをリモートから `--where` 付きで読んだときの転送量は未確認（ローカルのファイルでだけ確認した）。
 
+## 追加分（2026-10-26、新規27件）の作りと読み方
+
+- 地物を持つ26件はすべて `geo` メタデータを持つ（1.1.0 が15件、1.0.0 が11件）。`jma-rain-tokyo` は幾何の無い表。**bbox の covering を持つものは0件**。前の実験（estat-boundary-2020）では bbox 列と空間順の行グループが無いと terrio-js の範囲読みは全量だったので、新規のファイルも同じ条件では全量読みになると見込まれる（未測定）。
+- 行グループは、1つのファイルで1〜392まで。細かく切れているのは microsoft-building-footprints（QuadKey ごとの2本で392）、gfw-forest-carbon（47）、worldpop-idn（33）など。1つのファイルが数百万行でも、行グループが1つのもの（例: クマ出没記録、tokyo-flood-record-jp）は小さい。
+- 年ごとのファイル（agera5 の `year=YYYY`）、タイル別（ghsl の `R5_C32…`）、QuadKey 別（microsoft-building-footprints）など、**分割によって必要な部分だけ取れる**型 B が増えた。
+- 再現用の同梱物（`scripts/`、`tests/`、`uv.lock`、`source/MANIFEST.json`、`VERIFICATION.json`）が多く、**元の配布物と変換手順が一緒に置かれる**型 D が標準になった。
+- 詳細は個別の踏み跡と `yuiseki-datasets-growth-2026-10-26`。
+
 ## 使い分けの目安（この踏み跡の仮説）
 
 1. 必要な県・年・レイヤーが決まっているなら、型 B/C のファイル単位で取る（最大でも数十 MB のものが多い）。
