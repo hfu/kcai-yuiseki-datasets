@@ -70,6 +70,7 @@ finding:
 - 行グループは、1つのファイルで1〜392まで。細かく切れているのは microsoft-building-footprints（QuadKey ごとの2本で392）、gfw-forest-carbon（47）、worldpop-idn（33）など。1つのファイルが数百万行でも、行グループが1つのもの（例: クマ出没記録、tokyo-flood-record-jp）は小さい。
 - 年ごとのファイル（agera5 の `year=YYYY`）、タイル別（ghsl の `R5_C32…`）、QuadKey 別（microsoft-building-footprints）など、**分割によって必要な部分だけ取れる**型 B が増えた。
 - 再現用の同梱物（`scripts/`、`tests/`、`uv.lock`、`source/MANIFEST.json`、`VERIFICATION.json`）が多く、**元の配布物と変換手順が一緒に置かれる**型 D が標準になった。
+- **terrio-js の範囲読みの実測（2026-10-26）**: 11 本中、全量に近いものが多く、部分的に飛ばせたのは gfw（約73%）と worldpop-idn（約14%）のみ。microsoft-building-footprints は行グループ 392 でも全量だった。forty（UTM 55N）と kontur（EPSG:3857）は、経緯度の bbox だと0件になる。詳細は `checks/check-2026-10-26-new-geoparquet-range-reads.md`。
 - 詳細は個別の踏み跡と `yuiseki-datasets-growth-2026-10-26`。
 
 ## 使い分けの目安（この踏み跡の仮説）

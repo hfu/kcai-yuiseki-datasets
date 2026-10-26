@@ -89,7 +89,7 @@ finding:
 
 - **主題が変わった。** 既存は国・全国規模の公的データと国際機関の統計が中心だったが、新規は(1)北海道東部（経度 142〜147 度、緯度 42〜46 度付近）の窓で切った森林・草地・地形、(2)クマの出没記録（秋田・岐阜・石川・京都・長岡・上砂川、いずれも自治体のオープンデータ）、(3)東京の水害・降雨、(4)人口・建物の格子、が目立つ。特定の地域・主題を切り出した小さなデータセットが増えている。
 - **ラスタをベクタ（GeoParquet）にしている。** 多くは、ラスタ（GeoTIFF）のセルや 10×10 画素のブロックを多角形や点にして保持する。例: esa-worldcover-tokyo（10m を 100m ブロックにして360,000セル）、gebco（15秒の画素ごとの多角形518,400）、ghsl（30秒、7,200,000セル×2種）、gfw（セルの中心点 34,516,630）。元のラスタは `source/` に併置するものと、再配布しないもの（WorldPop）がある。
-- **`geo` メタデータは標準になった。** 地物を持つ26件はすべて GeoParquet の `geo` を持つ（1.1.0 が15件、1.0.0 が11件）。`jma-rain-tokyo` は幾何の無い表。一方、**bbox の covering を持つものは0件**。前の実験（estat-boundary-2020）では、bbox 列と空間順の行グループが無いと terrio-js の範囲読みは効かなかったので、新規のファイルも同じ条件では全量読みになると見込まれる（未測定）。
+- **`geo` メタデータは標準になった。** 地物を持つ26件はすべて GeoParquet の `geo` を持つ（1.1.0 が15件、1.0.0 が11件）。`jma-rain-tokyo` は幾何の無い表。一方、**bbox の covering を持つものは0件**。前の実験（estat-boundary-2020）では、bbox 列と空間順の行グループが無いと terrio-js の範囲読みは効かなかったので、新規のファイルも同じ条件では全量読みになると見込まれた。測ると、11本中9本は全量（約100%）、gfw は約73%、worldpop-idn は約14%だった。
 - **点の CRS は書かれない。** クマの出没記録など点のファイルの多くは `crs` を書かない（GeoParquet の既定は WGS 84 相当）。座標が WGS 84 経緯度かどうかは、カードの記述による。
 - **再現可能な小さなプロジェクトになった。** `pyproject.toml`、`uv.lock`、`scripts/01_download.py`〜`04_publish.py`、`src/`、`tests/`、`source/MANIFEST.json`（URL・バイト数・SHA-256）、`VERIFICATION.json` を同梱するものが多い（例: ctrees-agb、esa-worldcover、worldpop-idn）。既存のデータセットでは、検証は別のソースリポジトリの `scripts/02_verify.py` に置かれていた。
 - **ライセンスの書き方が増えた。** タグが `other` のもの（gebco: OGL v3.0 と GEBCO の条件、microsoft-building-footprints: CDLA-Permissive-2.0、ibtracs、kontur、usgs-comcat、gsi-dem-fuji、worldpop-idn/kor）がある。worldpop-idn/kor のメタデータ名は `odbl-1.0-worldpop-cc-by-4.0-source` で、既存の worldpop-jp-2026-01（CC BY 4.0）と書き方が違う。理由は読んでいない（未確認）。
@@ -103,7 +103,7 @@ finding:
 
 ## 確かめなかったこと
 
-- 新規の範囲読みの実測（terrio-js、DuckDB）は未実施。
+- 新規の範囲読みは、terrio-js 0.4.2 で11本を測った（`checks/check-2026-10-26-new-geoparquet-range-reads.md`）。DuckDB と terrio CLI は未実施。
 - 個別の踏み跡の全行の文字検査は、データセットごとに最大1ファイル（130MB以下）まで。文字列の列を持つ主な表で、U+FFFD は ishikawa-bear-incident の `remarks`（2,423行中17）のみで見つかった。
 - クマの出没記録の各自治体の列の意味、年度の違い、重複の有無は、カードを部分的に読んだのみ。
 - 増えた理由や今後の方針は不明（Yuiseki さんの意図は読んでいない）。
