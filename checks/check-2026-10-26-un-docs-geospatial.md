@@ -25,3 +25,11 @@
 - `GIS` を大文字小文字無視で検索すると、人名・地名の中の `gis` を拾う。結果から外した。`UN-GGIM` の同様の検索も、大文字小文字を区別して再確認した（個別文書では A/RES/69/266 のみ）。
 - 年の推定が日付と記号で食い違う行がありうる。
 - 公式サイト（docs.un.org）の原文との照合は、一部の引用（S/RES/1393、S/RES/1674、A/RES/60/1、A/RES/61/111）について、un-docs の抽出テキストの文言を読んだのみ。
+
+# 追記：地理空間情報課・ブリンディジ・ミッションの GIS 機能の悉皆的な検索（同日）
+
+- 検索語: `[Cc]artograph\w*`、`[Gg]eo-?spatial`、`[Gg]eographic(al)? [Ii]nformation [Ss]ystem`、`GIS`（大文字の単語）。SQL で `(?i)cartograph|geo-?spatial|geographic(al)?\s+information|\bGIS\b|Brindisi|mapping` に当たる 1,342 行を取り、Python の正規表現で語の周辺（前後約 230 字）を切り出した。
+- 当たった文書は 226 行（本文が同一のものを除く）。合冊（`A/NN/49(Vol.*)`、`S/INF/*`）30 行は個別の決議と同じ本文のため集計から除いた。
+- 最初の実行で `Geospatial`（大文字始まり）だけを大文字小文字区別で探していたため、小文字の `geospatial`（総会決議の文中）を取りこぼした。区別を直して再実行し、92 → 226 行になった。「悉皆」の集計は、再実行後のもの。
+- 分類は手作業（`checks/un-docs-geospatial-institutions.tsv`）。窓に「地図課」「地理空間情報課」「地図作成官」を含むものを H、「ブリンディジ」「地理空間・情報・通信技術サービス」「GIS センター」を含むものを U、ミッション語と GIS 語が同じ窓にあるものを M の候補とし、候補は窓を読んで確定した。
+- ミッションの網羅率: 冒頭 900 字にミッション名の正規表現を持ち、総会決議・安保理決議・会議録・議長声明・合冊を除いた文書 1,180 のうち、上の語を含むのは 23。ミッション名の正規表現は 21 種（UNIFIL、UNDOF、UNFICYP、UNMIK、MONUSCO/MONUC、UNMISS、UNAMID、MINUSMA、MINUSCA、UNMIL、UNOCI、MINUSTAH、UNISFA、MINURSO、UNMEE、UNMIT、UNAMA、UNAMI、UNSMIL、UNSOA/UNSOS、UNMHA）。

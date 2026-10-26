@@ -35,3 +35,9 @@
 - よい問いの条件を、文書記号に落ちる、素朴な検索に落とし穴がある、範囲を言える、多面的、同義語の表が残る、の5つにした。
 - kcai-un-docs を別リポジトリにするか、このリポジトリの cross で先に試すかは hfu の判断。リポジトリは作らず、Issue にも書き込まない。
 - yuiseki のデータセットが2日で69件から96件に増えたので、`knowledge/cross/dataset-growth-2026-10-26.md` に概観を置いた。個別の踏み跡は未作成。
+
+## 2026-10-26: kcai-un-docs は別リポジトリ（dwg7/kcai-un-docs）にし、別のクラウドエージェントに依頼する
+
+- hfu の判断で、kcai-un-docs は `dwg7/kcai-un-docs` として別リポジトリにする。このリポジトリは作らず、依頼文の叩き台を `handoffs/kcai-un-docs-first-prompt.md` に置く（置き場所の `handoffs/` を AGENTS.md に追加）。
+- 「UN Geospatial Information Section、ブリンディジの兵站基地のサービス、各ミッションの GIS 機能」の表現を、un-docs の範囲で悉皆的に把握した（`knowledge/cross/un-docs-geospatial-institutions.md`、分類は `checks/un-docs-geospatial-institutions.tsv`）。
+- 最初の悉皆の検索は、`Geospatial` を大文字小文字を区別して探したため、小文字の `geospatial` を取りこぼした（92 → 226 文書）。再実行後の数値を使う。
