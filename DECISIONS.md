@@ -41,3 +41,9 @@
 - hfu の判断で、kcai-un-docs は `dwg7/kcai-un-docs` として別リポジトリにする。このリポジトリは作らず、依頼文の叩き台を `handoffs/kcai-un-docs-first-prompt.md` に置く（置き場所の `handoffs/` を AGENTS.md に追加）。
 - 「UN Geospatial Information Section、ブリンディジの兵站基地のサービス、各ミッションの GIS 機能」の表現を、un-docs の範囲で悉皆的に把握した（`knowledge/cross/un-docs-geospatial-institutions.md`、分類は `checks/un-docs-geospatial-institutions.tsv`）。
 - 最初の悉皆の検索は、`Geospatial` を大文字小文字を区別して探したため、小文字の `geospatial` を取りこぼした（92 → 226 文書）。再実行後の数値を使う。
+
+## 2026-10-26: un-docs の kcai に関する作業を kcai-un-docs のセッションに引き継ぐ
+
+- hfu の指示で、親（このリポジトリ）が持っていた un-docs の kcai 関連の残作業 7 項目を、`dwg7/kcai-un-docs` のセッション（`session_01X1Q6atYAXmLobBjRCutL25`）にメッセージで引き継いだ（詳細は `handoffs/kcai-un-docs-first-prompt.md` の追補）。以後、このリポジトリでは kcai-un-docs の作業をしない。
+- `un-docs-kcai-feasibility` と `un-docs-geospatial-institutions` は、引き継ぎ時点のスナップショットとして残す（更新は kcai-un-docs 側）。データセット全般の観点の踏み跡（`datasets/un-docs`、`text-corpora`、`card-vs-data-checks`）はこのリポジトリに残す。
+- 新規 27 件のデータセット（クマ出没記録、北海道東部の森林、水害・降雨など）は un-docs とは無関係で、このリポジトリの作業として残る。
