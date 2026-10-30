@@ -1,6 +1,6 @@
 ---
 id: yuiseki-datasets-index
-title: yuiseki のデータセット全96件の索引：分類、中身、規模、踏み跡
+title: yuiseki のデータセット全116件の索引：分類、中身、規模、踏み跡
 status: draft
 sources:
   - Hugging Face API `/api/datasets?author=yuiseki`（2026-10-26）
@@ -21,12 +21,12 @@ related:
 verified_how: read-docs
 pattern: landscape
 finding:
-  - 2026-10-26 時点で96件。日本の公的データ、OSM とその派生、世界の統計、世界の地理、知識・テキスト、旧作に、2026-10-25〜26 に増えた6群（北海道東部の窓抽出、クマ出没記録、災害・気象、気候、人口・建物・土地被覆、地形・基盤）を加えて分けると、全件に個別の踏み跡がある
+  - 2026-10-30 時点で116件。日本の公的データ、OSM とその派生、世界の統計、世界の地理、知識・テキスト、旧作に、2026-10-25〜30 に増えた9群（北海道東部の窓抽出、クマ出没記録、災害・気象、気候、人口・建物・土地被覆、地形・基盤、東北6県の森林資源・植生、ブナの豊凶、気象・地球物理の原本）を加えて分けると、全件に個別の踏み跡がある
 ---
 
 ## 要点
 
-- 全 96 件（`knowledge/datasets/` に 1 件 1 ファイル。2026-10-26 時点）。分類はこの踏み跡での整理で、Yuiseki さんの分類ではない。新規27件の概観は `yuiseki-datasets-growth-2026-10-26`。
+- 全 116 件（`knowledge/datasets/` に 1 件 1 ファイル。2026-10-30 時点）。分類はこの踏み跡での整理で、Yuiseki さんの分類ではない。増加の概観は `yuiseki-datasets-growth-2026-10-26`（2026-10-26 の27件と、2026-10-30 追記の20件）。
 - 横断の踏み跡: 規模（`yuiseki-datasets-scale`）、アクセス方法（`yuiseki-datasets-access-methods`）、版の持ち方（`yuiseki-datasets-version-policies`）、権利の除外（`yuiseki-datasets-rights-exclusions`）、コード体系（`yuiseki-datasets-code-systems`）、テキスト系（`yuiseki-datasets-text-corpora`）。
 
 ## 一覧
@@ -152,21 +152,24 @@ finding:
 | [kyoto-bear-sighting](../datasets/kyoto-bear-sighting.md) | ツキノワグマの目撃10,225件（2009-04-08〜2018-12-10） | 2.7 MB | cc-by-4.0 |
 | [nagaoka-bear-sighting](../datasets/nagaoka-bear-sighting.md) | 新潟県長岡市のクマの目撃・痕跡166件（平成26・27年度、2014-04-09〜2016-03-30） | 0.2 MB | cc-by-4.0 |
 
-### 災害・気象（5件）
+### 災害・気象（7件）
 
 | データセット | 中身 | 全体 | ライセンスタグ |
 |---|---|---|---|
 | [ibtracs-v04r01](../datasets/ibtracs-v04r01.md) | 世界の台風・ハリケーンなどの熱帯低気圧の観測位置311,935行（1980-01-01〜2026-10-22 UTC） | 154.0 MB | other |
+| [ibtracs-v04r01-2026-10](../datasets/ibtracs-v04r01-2026-10.md) | 意図的に空のリポジトリで、カードは「IBTrACS v04r01 は yuiseki/ibtracs-v04r01 に置いてある（since1980 の GeoParquet）」と述べる | 0.0 MB | other |
 | [jma-rain-tokyo](../datasets/jma-rain-tokyo.md) | 東京都内の気象庁31観測所の降水量（日別588,783観測所日、時別8,660,976観測所時）と、観測所一覧・取得ファイルの記録 | 282.3 MB | cc-by-4.0 |
+| [ksj-a31a-flood-greater-tokyo](../datasets/ksj-a31a-flood-greater-tokyo.md) | 東京23区版（ksj-a31a-flood-tokyo23）を広げ、埼玉・千葉・東京・神奈川に触れる洪水浸水想定区域4,366,127件（5カテゴリ） | 4.21 GB | cc-by-4.0 |
 | [ksj-a31a-flood-tokyo23](../datasets/ksj-a31a-flood-tokyo23.md) | 東京23区に触れる洪水浸水想定区域227,651件（計画規模50,124・想定最大規模136,671・浸水継続時間40,374・家屋倒壊等氾濫想定（氾濫流301・河岸浸食181）） | 1.47 GB | cc-by-4.0 |
 | [tokyo-flood-record-jp](../datasets/tokyo-flood-record-jp.md) | 東京の浸水実績5,845区域（多角形）と121点（点）の、被害の棟数・世帯数・河川・区市町村・最寄りの雨量計の降雨を持つ記録 | 3.2 MB | cc-by-4.0 |
 | [usgs-comcat-2025-m45](../datasets/usgs-comcat-2025-m45.md) | 2025年のマグニチュード4.5以上の地震8,502件（優先ネットワーク `us`、事象種別 earthquake） | 6.7 MB | other |
 
-### 気候（2件）
+### 気候（3件）
 
 | データセット | 中身 | 全体 | ライセンスタグ |
 |---|---|---|---|
 | [agera5-japan-monthly-temperature-1979-2026](../datasets/agera5-japan-monthly-temperature-1979-2026.md) | 日本周辺の窓（長方形、海を含む）の0.1°格子の月別気温を、セルの中心点の GeoParquet（47,507,200行、571か月、年ごと48ファイル）にしたもの | 84.6 MB | cc-by-4.0 |
+| [agera5-japan-monthly-water-1979-2026](../datasets/agera5-japan-monthly-water-1979-2026.md) | 日本周辺の窓の0.1°格子の月別降水量（`precip_mm`）と基準蒸発散量（`et0_mm`、いずれも月合計mm）を、セルの中心点の GeoParquet（47,507,200行、571か月、年ごと48ファイル）にしたもの | 71.9 MB | cc-by-sa-4.0 |
 | [koppen-geiger-east-asia-1991-2020](../datasets/koppen-geiger-east-asia-1991-2020.md) | ケッペン・ガイガーの気候区分図を、同じクラスが4連結で続く領域の多角形（13,480件）にした GeoParquet | 13.5 MB | cc-by-4.0 |
 
 ### 人口・建物・土地被覆（6件）
@@ -186,6 +189,38 @@ finding:
 |---|---|---|---|
 | [gsi-dem-fuji-z14-100m-2026-10-25](../datasets/gsi-dem-fuji-z14-100m-2026-10-25.md) | 国土地理院の DEM10B の標高タイル100枚（ズーム14、10×10）を、10×10画素ごとの約100m の Web Mercator 格子にして、平均・最小・最大標高と有効画素数を持たせた GeoParquet（65,536セル） | 52.5 MB | other |
 | [timezone-boundary-builder-2026d](../datasets/timezone-boundary-builder-2026d.md) | タイムゾーンの境界の多角形（`tzid` つき）を3つの設定（全ゾーン、1970年以降同じ、現在同じ）の GeoParquet にしたもの | 333.9 MB | odbl |
+
+### 東北6県の森林資源・植生（12件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [akita-forest-resource-mesh-2026](../datasets/akita-forest-resource-mesh-2026.md) | 秋田県の陸地の20mメッシュ29,088,595セル（60シート、シートの計38,875,524セルから秋田県の分を切り出し）を、シートごとの GeoParquet にしたもの（EPSG:6678） | 277.5 MB | other |
+| [akita-vegetation-2024](../datasets/akita-vegetation-2024.md) | 秋田県の現存植生図2024を切り出した GeoParquet（174,576ポリゴン、11,635.9 km²） | 235.0 MB | other |
+| [aomori-forest-resource-mesh-2026](../datasets/aomori-forest-resource-mesh-2026.md) | 青森県の陸地の20mメッシュ24,108,678セル（63シート、シートの計29,837,059セルから青森県の分を切り出し）を、シートごとの GeoParquet にしたもの（EPSG:6678） | 236.8 MB | other |
+| [aomori-vegetation-2024](../datasets/aomori-vegetation-2024.md) | 青森県の現存植生図2024を切り出した GeoParquet（147,302ポリゴン、9,643.5 km²） | 139.8 MB | other |
+| [fukushima-forest-resource-mesh-2026](../datasets/fukushima-forest-resource-mesh-2026.md) | 福島県の陸地の20mメッシュ34,452,709セル（69シート、シートの計39,939,045セルから福島県の分を切り出し）を、シートごとの GeoParquet にしたもの（EPSG:6677） | 335.1 MB | other |
+| [fukushima-vegetation-2024](../datasets/fukushima-vegetation-2024.md) | 福島県の現存植生図2024を切り出した GeoParquet（336,047ポリゴン、13,781.0 km²） | 323.1 MB | other |
+| [iwate-forest-resource-mesh-2026](../datasets/iwate-forest-resource-mesh-2026.md) | 岩手県の陸地の20mメッシュ38,179,256セル（72シート、シートの計46,980,617セルから岩手県の分を切り出し）を、シートごとの GeoParquet にしたもの（EPSG:6678） | 344.1 MB | other |
+| [iwate-vegetation-2024](../datasets/iwate-vegetation-2024.md) | 岩手県の現存植生図2024を切り出した GeoParquet（248,187ポリゴン、15,271.8 km²） | 204.3 MB | other |
+| [miyagi-forest-resource-mesh-2026](../datasets/miyagi-forest-resource-mesh-2026.md) | 宮城県の陸地の20mメッシュ18,194,823セル（47シート、シートの計26,280,216セルから宮城県の分を切り出し）を、シートごとの GeoParquet にしたもの（EPSG:6678） | 181.6 MB | other |
+| [miyagi-vegetation-2024](../datasets/miyagi-vegetation-2024.md) | 宮城県の現存植生図2024を切り出した GeoParquet（143,044ポリゴン、7,278.0 km²） | 129.3 MB | other |
+| [yamagata-forest-resource-mesh-2026](../datasets/yamagata-forest-resource-mesh-2026.md) | 山形県の陸地の20mメッシュ23,319,199セル（53シート、シートの計30,267,408セルから山形県の分を切り出し）を、シートごとの GeoParquet にしたもの（EPSG:6678） | 230.9 MB | other |
+| [yamagata-vegetation-2024](../datasets/yamagata-vegetation-2024.md) | 山形県の現存植生図2024を切り出した GeoParquet（141,922ポリゴン、9,327.7 km²） | 162.3 MB | other |
+
+### ブナの豊凶（2件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [fagus-crenata-masting-jp-2026-06](../datasets/fagus-crenata-masting-jp-2026-06.md) | ブナの種子生産の調査データ（東北98地点と北海道渡島半島4地点、1989〜2008年）の凍結コピー | 1.2 MB | cc0-1.0 |
+| [landsat5-fagus-crenata-sites-jp-2026-10](../datasets/landsat5-fagus-crenata-sites-jp-2026-10.md) | ブナの豊凶データの102地点（東北98・渡島4）の周辺300m以内について、1989〜2008年の4〜5月と7〜8月の全ての Landsat 5 の撮影から、地表反射率とQAを抽出した表 | 44.9 MB | other |
+
+### 気象・地球物理の原本（3件）
+
+| データセット | 中身 | 全体 | ライセンスタグ |
+|---|---|---|---|
+| [igrf-14-coefficients-2024-11](../datasets/igrf-14-coefficients-2024-11.md) | IGRF-14 のシュミット準正規化球面調和係数（次数1〜13、1900〜2025年の26時点と、2025〜30年の永年変化） | 0.1 MB | other |
+| [ncep-cpc-global-ir-4km-2026-10](../datasets/ncep-cpc-global-ir-4km-2026-10.md) | 静止気象衛星の約11µm赤外の輝度温度を全球（60°N〜60°S）で合成した4km格子の、1時間ごとのファイル168個（各ファイルに:00と:30の2枚）を、配布されたままの圧縮ファイル（.Z）で凍結したもの（4.55GB） | 4.55 GB | other |
+| [ncep-ncar-reanalysis1-air-sig995-2026-03](../datasets/ncep-ncar-reanalysis1-air-sig995-2026-03.md) | NCEP/NCAR 再解析1の地表付近（シグマ0.995面）の気温の NetCDF（年ごと79ファイル、1948年〜2026-03-17）を、配布されたままで凍結したもの（約1.7GB） | 1.74 GB | other |
 
 ## 確かめなかったこと
 

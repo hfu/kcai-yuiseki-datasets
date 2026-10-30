@@ -151,6 +151,36 @@ finding:
 | nagaoka-bear-sighting | 2026-10-26 | cc-by-4.0 | 0.2 MB | 14 | 1 | 0.0 MB | 0.0 MB | geoparquet |
 | kamisunagawa-higuma-sighting | 2026-10-26 | cc-by-4.0 | 0.1 MB | 13 | 1 | 0.0 MB | 0.0 MB | geoparquet |
 
+## 追加分（2026-10-30、新規20件）
+
+- 2026-10-30 時点で **116 件**、合計 75.23 GB。新規20件は合計 13.42 GB。
+- 新規20件のうち、Parquet が無いのは3件（`ibtracs-v04r01-2026-10`＝空の移転先、`ncep-cpc-global-ir-4km-2026-10` 4.55GB、`ncep-ncar-reanalysis1-air-sig995-2026-03` 1.7GB）。この3件のうち後者2件は約6.3GBで、新規の約半分の量を占める。
+- 東北6県の森林資源メッシュ6件は、シートごとのファイル（47〜72本、各県の合計181〜344MB）で、1ファイルは約8MB前後。植生図6件は県ごとに1ファイル（129〜323MB）。
+- `ksj-a31a-flood-greater-tokyo`（4.21 GB）は、全体1本とカテゴリ別の本で多角形を二重に持つ（Parquet の行数は実際の2倍）。
+
+| データセット | 最終更新 | ライセンス(タグ) | 全体 | ファイル数 | Parquet 本数 | Parquet 合計 | 最大の Parquet | 地物形式 |
+|---|---|---|---|---|---|---|---|---|
+| ncep-cpc-global-ir-4km-2026-10 | 2026-10-30 | other | 4.55 GB | 179 | 0 | - | - | no-parquet |
+| ksj-a31a-flood-greater-tokyo | 2026-10-28 | cc-by-4.0 | 4.21 GB | 26 | 6 | 2.56 GB | 1.28 GB | geoparquet |
+| ncep-ncar-reanalysis1-air-sig995-2026-03 | 2026-10-30 | other | 1.74 GB | 89 | 0 | - | - | no-parquet |
+| iwate-forest-resource-mesh-2026 | 2026-10-29 | other | 344.1 MB | 86 | 72 | 343.9 MB | 7.7 MB | geoparquet |
+| fukushima-forest-resource-mesh-2026 | 2026-10-29 | other | 335.1 MB | 83 | 69 | 334.8 MB | 8.0 MB | geoparquet |
+| fukushima-vegetation-2024 | 2026-10-29 | other | 323.1 MB | 17 | 1 | 322.9 MB | 322.9 MB | geoparquet |
+| akita-forest-resource-mesh-2026 | 2026-10-28 | other | 277.5 MB | 73 | 60 | 277.3 MB | 7.8 MB | geoparquet |
+| aomori-forest-resource-mesh-2026 | 2026-10-29 | other | 236.8 MB | 76 | 62 | 236.5 MB | 7.7 MB | geoparquet |
+| akita-vegetation-2024 | 2026-10-28 | other | 235.0 MB | 17 | 1 | 234.9 MB | 234.9 MB | geoparquet |
+| yamagata-forest-resource-mesh-2026 | 2026-10-29 | other | 230.9 MB | 67 | 53 | 230.6 MB | 8.6 MB | geoparquet |
+| iwate-vegetation-2024 | 2026-10-29 | other | 204.3 MB | 17 | 1 | 204.2 MB | 204.2 MB | geoparquet |
+| miyagi-forest-resource-mesh-2026 | 2026-10-29 | other | 181.6 MB | 61 | 47 | 181.3 MB | 7.6 MB | geoparquet |
+| yamagata-vegetation-2024 | 2026-10-29 | other | 162.3 MB | 17 | 1 | 162.2 MB | 162.2 MB | geoparquet |
+| aomori-vegetation-2024 | 2026-10-29 | other | 139.8 MB | 17 | 1 | 139.7 MB | 139.7 MB | geoparquet |
+| miyagi-vegetation-2024 | 2026-10-29 | other | 129.3 MB | 17 | 1 | 129.2 MB | 129.2 MB | geoparquet |
+| agera5-japan-monthly-water-1979-2026 | 2026-10-28 | cc-by-sa-4.0 | 71.9 MB | 56 | 48 | 71.1 MB | 1.5 MB | geoparquet |
+| landsat5-fagus-crenata-sites-jp-2026-10 | 2026-10-28 | other | 44.9 MB | 9 | 4 | 44.9 MB | 44.2 MB | plain |
+| fagus-crenata-masting-jp-2026-06 | 2026-10-28 | cc0-1.0 | 1.2 MB | 12 | 4 | 0.4 MB | 0.4 MB | plain |
+| igrf-14-coefficients-2024-11 | 2026-10-29 | other | 0.1 MB | 10 | 1 | 0.0 MB | 0.0 MB | plain |
+| ibtracs-v04r01-2026-10 | 2026-10-30 | other | 0.0 MB | 2 | 0 | - | - | no-parquet |
+
 ## 確かめなかったこと
 
 - 行数、列数、行グループ数は、手元に落とした数本（estat-boundary-2020 の 2 県、abr-src の 6 本、jp-admin の 2 本、geo-triples-jp-gov の triples）しか数えていない。全体の行数は各カードに依る。

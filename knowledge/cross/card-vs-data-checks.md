@@ -62,6 +62,14 @@ finding:
 - **欠損（実測）**: usgs-comcat の `tz` は全行null、`felt` 84%、`mmi` 90%。tokyo-flood-record-jp の `district3` 99.7%、`pd_bldg` 98%。ibtracs の `WMO_WIND` 61%、`WMO_PRES` 58%。いずれもカードの記述と矛盾しない（カードは欠損の割合を書かない）。
 - 確かめた範囲（件数と、文字列の列の文字の状態）では、カードとデータの食い違いは見つかっていない。
 
+## 追加分（2026-10-30、新規20件）の突き合わせ
+
+- **件数が一致したもの**: 東北6県の森林資源メッシュ（秋田29,088,595、青森24,108,678、福島34,452,709、岩手38,179,256、宮城18,194,823、山形23,319,199）、植生図（秋田174,576、青森147,302、福島336,047、岩手248,187、宮城143,044、山形141,922）、fagus-crenata-masting（102+102+19+6,747=6,970）、igrf-14（5,265）、agera5-water（47,507,200）、ksj-a31a-greater-tokyo（4,366,127。Parquet 全行は二重計上で8,732,254）。
+- **数え方の違い**: aomori-forest-resource-mesh のカードは63シートと書くが、Parquet は62本（行数の合計はカードのセル数と一致。1シートが省略されたとみられるが未確認）。
+- **座標系の食い違い（データセットの間）**: fukushima-forest-resource-mesh は EPSG:6677（第IX系）、同じ県の fukushima-vegetation は EPSG:6678（第X系）。他の5県は両方 EPSG:6678。カードはそれぞれ正しく書いている。
+- **文字（実測）**: 文字列の列を持つ新規20件のうち検査した範囲（メッシュ6件の1ファイル各約75万行、fagus、landsat5、igrf、ksj-a31a-greater、miyagi-vegetation）で、U+FFFD も二重エンコードの疑いも無かった。130MB を超える植生図5件は未検査。
+- カードとデータの食い違いは、確かめた範囲（件数、座標系の記述）では上の1件（63シート対62本）のみ。
+
 ## 元データ由来の文字の欠陥（Parquet は忠実に保持）
 
 - **Natural Earth の DBF の二重エンコード:** 元 zip の `ne_10m_admin_1_states_provinces.dbf`（`.cpg` は UTF-8）で、`woe_label` の `Paysandú` が UTF-8 のバイト `C3 83 C2 BA`（`PaysandÃº`）で入っている。4,596 行中、`Ã` を含むのは 134 行。yuiseki/ne-admin0-10m の Parquet も同じ文字列。カードは変換時に「`.cpg` が指す文字コードで復号した」と書いており、元の欠陥を直していない。natural-earth の別レイヤー（`ne_10m_admin_1_states_provinces_lakes`）の先頭 3,000 行にも同じ現象がある。

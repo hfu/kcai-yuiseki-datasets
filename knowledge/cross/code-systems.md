@@ -40,6 +40,8 @@ finding:
 | ourairports-2026-08 | `regions.local_code` | OurAirports 独自 | 引用符なしのゼロつきコードで、型推論が数値にする |
 | estat-jumin-idou | `statsDataId` と分類の slot | e-Stat 独自 | 表ごとに分類軸の意味が違い、`tables` で確認する |
 
+- **追加（2026-10-30）**: 東北6県の森林資源メッシュは平面直角座標系で、福島だけ EPSG:6677（第IX系）、他の5県は EPSG:6678（第X系）。同じ県の現存植生図（6県とも EPSG:6678）と重ねるとき、福島は再投影が要る。メッシュのセルの座標（`cell_x`・`cell_y`）もその座標系のメートル。
+
 ## 使うときの注意（意味づけ）
 
 - **体系の変換表が要る組**: 警察コードと JIS（npa-traffic-accidents × jp-admin）、FIPS と JIS（geonames × jp-admin）、M49 と ISO3（un-statistical-yearbook × undp-hdr）。変換表はデータセット側には無いので、別途用意する（未確認）。
