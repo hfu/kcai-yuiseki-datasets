@@ -21,6 +21,12 @@
 | yuiseki/un-docs | 記号の綴りの重複（`S/RES/1 (1946)` と `S/RES/1(1946)`）、安保理決議が 2699 で切れる、OCR の説明の食い違い | kcai-un-docs 側の下書き |
 | opengeos/terrio | Parquet の WKB 列を幾何と見ない（`Geometry: None` で黙って null）、CRS 無記載で 4326 とみなす、CP932 の Shapefile 属性が黙って化ける（0.3.2・0.4.2 とも） | `knowledge/cross/terrio-usage-possibilities.md`。kcai-terrio の `drafts/upstream/` が受け皿 |
 
+## B'. 提案の候補（2026-10-31 追記）
+
+| 相手 | 内容 | 根拠 |
+|---|---|---|
+| yuiseki の東北6県の現存植生図（`<県>-vegetation-2024`） | 1ファイル・1行グループ（129〜323MB）で、`covering` があっても小さな窓で全量を読む。Hilbert 順に並べた複数の行グループ（100〜250行／群）にすると、小さな窓の転送量が下がる見込み（estat-boundary-2020 の実験で約9〜19%） | `checks/check-2026-10-31-tohoku-range-reads.md`、`checks/check-2026-10-24-estat-boundary-geoparquet.md` |
+
 ## C. 判断が分かれる記述
 
 - **worldpop-idn/kor のライセンス**: メタデータ名が `odbl-1.0-worldpop-cc-by-4.0-source`。既存の worldpop-jp は CC BY 4.0。理由（LICENSE に書かれた「保守的な選択」）は読んでいない。

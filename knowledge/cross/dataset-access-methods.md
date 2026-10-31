@@ -71,7 +71,7 @@ finding:
 - 年ごとのファイル（agera5 の `year=YYYY`）、タイル別（ghsl の `R5_C32…`）、QuadKey 別（microsoft-building-footprints）など、**分割によって必要な部分だけ取れる**型 B が増えた。
 - 再現用の同梱物（`scripts/`、`tests/`、`uv.lock`、`source/MANIFEST.json`、`VERIFICATION.json`）が多く、**元の配布物と変換手順が一緒に置かれる**型 D が標準になった。
 - **terrio-js の範囲読みの実測（2026-10-26）**: 11 本中、全量に近いものが多く、部分的に飛ばせたのは gfw（約73%）と worldpop-idn（約14%）のみ。microsoft-building-footprints は行グループ 392 でも全量だった。forty（UTM 55N）と kontur（EPSG:3857）は、経緯度の bbox だと0件になる。詳細は `checks/check-2026-10-26-new-geoparquet-range-reads.md`。
-- **追加分（2026-10-30、新規20件）の作り**: 東北6県の森林資源メッシュ6件と植生図6件は、**すべて bbox の covering を持つ**（`geo` 1.1.0）。新規47件のうち covering を持つのは12件のみで、東北6県の組が初めての例（既存で covering を持つのは jp-admin-2026-09、nfgis-2024、osm-*-src）。シートごとの分割（森林資源メッシュ）と covering の組み合わせは、範囲読みに向く作りだが、terrio-js での実測はしていない。ほかの新規（agera5-water、ksj-a31a-greater-tokyo）は covering が無い。
+- **追加分（2026-10-30、新規20件）の作り**: 東北6県の森林資源メッシュ6件と植生図6件は、**すべて bbox の covering を持つ**（`geo` 1.1.0）。新規47件のうち covering を持つのは12件のみで、東北6県の組が初めての例（既存で covering を持つのは jp-admin-2026-09、nfgis-2024、osm-*-src）。シートごとの分割（森林資源メッシュ）と covering の組み合わせは、範囲読みに向く作りだが、**実測（2026-10-31）では、メッシュは分割のおかげで1窓あたり8MB以下に収まり、植生図は1ファイル・1行グループのため、小さな窓でも県のファイル全量（129〜323MB）を読んだ**（`checks/check-2026-10-31-tohoku-range-reads.md`）。ほかの新規（agera5-water、ksj-a31a-greater-tokyo）は covering が無い。
 - 型 E（原本の凍結）として、Parquet に変換しない NetCDF・圧縮ファイル（ncep-cpc-global-ir-4km、ncep-ncar-reanalysis1）が加わった。
 - 詳細は個別の踏み跡と `yuiseki-datasets-growth-2026-10-26`。
 
